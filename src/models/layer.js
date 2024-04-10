@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../db/sequelize');
-const Project = require('./project')
+const Project = require( './project' )
 const AttributeType = require('./attributeType');
 
 class Layer extends Model { }
@@ -16,7 +16,11 @@ Layer.init(
         allowNull: false
     },
     dxfUrl: DataTypes.STRING,
-    description: DataTypes.TEXT
+    description: DataTypes.TEXT,
+    projectionType: {
+      type: DataTypes.ENUM('SLD99', 'WGS84'),
+      allowNull: false
+    }
   },
   {
     sequelize,
